@@ -1,0 +1,14 @@
+{
+  "name": "year-end",
+  "version": "1.0.0",
+  "description": "Test page for year-end header",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "stylus": "^0.54.5"
+  }
+}
