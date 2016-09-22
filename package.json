@@ -1,14 +1,24 @@
 {
   "name": "year-end",
   "version": "1.0.0",
-  "description": "Test page for year-end header",
+  "description": "Year-end header template",
   "main": "index.js",
   "scripts": {
     "test": "test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eessex/year-end.git"
+  },
   "author": "",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eessex/year-end/issues"
+  },
+  "homepage": "https://github.com/eessex/year-end#readme",
   "dependencies": {
+    "coffee-script": "^1.10.0",
+    "jquery": "^3.1.0",
     "stylus": "^0.54.5"
   }
 }
