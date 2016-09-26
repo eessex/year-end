@@ -1,34 +1,78 @@
-backgroundsLeft = ['url(https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Ffu2NrvxW_F3JK3rCE-50dw%252F1405_A-Levy_FelixKiessling_Ausdehnung_35B9884.jpg&width=1100&quality=95)',
-									 'url(https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9c8Gt0OxTiCWiOszM76LIw%252FMCH_Artsy5.jpg&width=1100&quality=95)',
-									 'url(https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FD0QaqRzjY2PoCuSp2HvhSA%252F1-AnnaHulau%25CC%2588ov%25E2%2580%25A0-Brothers-2015-photoby%2BMicha%2BlCzanderle-courtesy%2Bhuntkastner%25282%2529.jpg&width=1100&quality=95)',
-							 		 'url(https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FKyfI_f_djZ3OEWkhE-tiPw%252FOther%2BPeople%2B3.jpg&width=1100&quality=95)',
-							 		 'url(https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fe6BWBwt9UQ-i_tRqUsKuJA%252FDH-PERFORMANCE%2BVIEW-2016-30-HIRES.jpg&width=1100&quality=95)'
+
+
+backgroundsLeft = ['url(./assets/images/one.jpeg)',
+				   				 'url(./assets/images/two.jpeg)',
+					 				 '/Users/eve/development/year-end/assets/images/three.mp4',
+							 		 'url(./assets/images/four.jpeg)',
+							 		 '/Users/eve/development/year-end/assets/images/five.mp4',
+							 		 'url(./assets/images/one.jpeg)',
+				   				 'url(./assets/images/two.jpeg)',
+					 				 '/Users/eve/development/year-end/assets/images/three.mp4',
+							 		 'url(./assets/images/four.jpeg)',
+							 		 '/Users/eve/development/year-end/assets/images/five.mp4'
 							 		 ];
 i = 0
 
 rotateBackgroundLeft = =>
+	active = i + 1
 	if i < 5
-		$('.article-fullscreen__col-1').css('background-image', backgroundsLeft[i])
+		if backgroundsLeft[i].includes('.mp4')
+			console.log i + " vid " + backgroundsLeft[i]
+			$('.item').removeClass('active')
+			$('*[data-id="' + active + '"]').toggleClass('active')
+			$('.article-fullscreen__col-1 .media video').attr('src', backgroundsLeft[i])
+			$('.article-fullscreen__col-1 .media video').css('opacity', 1)
+			$('.article-fullscreen__col-1 .media').css('background', 'rgba(255,255,255,0)')
+		else
+			console.log i + " img " + backgroundsLeft[i]
+			$('.item').removeClass('active')
+			$('*[data-id="' + active + '"]').toggleClass('active')
+			$('.article-fullscreen__col-1 .media').css('background', backgroundsLeft[i])
+			$('.article-fullscreen__col-1 .media video').css('opacity', 0)
 		++ i
 		i = 0 if i == 5
-
-	setTimeout(rotateBackgroundLeft, 3000)
 
 rotateBackgroundRight = =>
 	if i < 5
-		$('.article-fullscreen__col-2').css('background-image', backgroundsLeft[i])
+		if backgroundsLeft[i].includes('.mp4')
+			console.log i + " vid " + backgroundsLeft[i]
+			$('.article-fullscreen__col-2 .media video').attr('src', backgroundsLeft[i])
+			$('.article-fullscreen__col-2 .media video').css('opacity', 1)
+			$('.article-fullscreen__col-2 .media').css('background', 'rgba(255,255,255,0)')
+		else
+			console.log i + " img " + backgroundsLeft[i]
+			$('.article-fullscreen__col-2 .media').css('background', backgroundsLeft[i])
+			$('.article-fullscreen__col-2 .media video').css('opacity', 0)
 		++ i
 		i = 0 if i == 5
 
-	setTimeout(rotateBackgroundRight, 4000)
+# randomTimeout = ->
+# 	stuff = Math.random() * (5000 - 1000) + 1000
+# 	console.log stuff
 
-randomTimeout = ->
-	stuff = Math.random() * (5000 - 1000) + 1000
-	console.log stuff
+timerLeft = setInterval(rotateBackgroundLeft, 3000)
+timerRight = setInterval(rotateBackgroundRight, 3000)
 
 $('.item').mouseenter (event) ->
+	if i < 5
+		clearInterval(timerLeft)
+	else
+		clearInterval(timerRight)
 	$('.item').removeClass('active')
-	item = $(this).toggleClass('active')
+	i = $(this).data('id') - 1
+	if backgroundsLeft[i].includes('.jpeg')
+		$(this).parent().siblings('.media').find('video').css('opacity', 0)
+		$(this).parent().siblings().css( 'background', backgroundsLeft[i] )
+	else if backgroundsLeft[i].includes('.mp4')
+		$(this).parent().siblings('.media').find('video').attr('src', backgroundsLeft[i]).css('opacity', 1)
+	$(this).toggleClass('active')
+
+$('.item').mouseleave (event) ->
+	if i < 5
+		setInterval(rotateBackgroundLeft, 3000)
+	else
+		setInterval(rotateBackgroundRight, 3000)
+	$(this).toggleClass('active')
 
 rotateBackgroundLeft()
 rotateBackgroundRight()

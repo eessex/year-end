@@ -3,6 +3,14 @@ body {
   margin: 0;
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
   background: #222;
+  font-size: 13px;
+}
+h1 {
+  font-weight: 300;
+  font-size: 100px;
+  margin-bottom: 50px;
+  line-height: 50px;
+  margin-top: 75px;
 }
 .header {
   position: absolute;
@@ -10,9 +18,28 @@ body {
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 2px solid;
-  z-index: 100;
+  z-index: 300;
+  height: 80px;
+  padding: 0 30px;
+}
+.header .logo.artsy {
+  height: 40px;
+  width: auto;
+}
+.header .right {
+  display: flex;
+  align-items: center;
+}
+.header .right p {
+  display: inline-block;
+  margin: 0 1.5em 0 0;
+}
+.header .right .logo.planet-art {
+  display: inline-block;
+  width: 130px;
 }
 .article-fullscreen {
   width: 100%;
@@ -20,46 +47,82 @@ body {
   overflow: hidden;
   display: flex;
 }
-.article-fullscreen .col {
-  padding: 4.5em 0 1em 0;
+.article-fullscreen .title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 80px;
+  bottom: 0;
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  z-index: 300;
+}
+.article-fullscreen .title h1:nth-child(1) {
+  width: 100%;
+  align-self: flex-start;
+}
+.article-fullscreen .title h1:nth-child(2) {
+  width: 100%;
+  align-self: flex-end;
+}
+.article-fullscreen .media {
+  background: rgba(255,255,255,0);
+  background-size: cover !important;
+  background-position: 50% !important;
+  height: 100vh;
+  transition: background 0.25s linear;
   opacity: 0.9;
-  height: 90vh;
+}
+.article-fullscreen .media video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -25%;
+  right: 0;
+  min-width: 100%;
+  z-index: -10;
+  height: 100%;
+  opacity: 0;
+  z-index: 200;
+  transition: opacity 0.25s linear;
+}
+.article-fullscreen .col {
+  position: absolute;
+  top: 120px;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  z-index: 350;
 }
 .article-fullscreen .col .item {
   display: flex;
-  font-size: 4.5em;
   padding: 0;
   height: 20%;
   margin: 0;
   width: 100%;
   align-items: center;
 }
-.article-fullscreen .col.active {
+.article-fullscreen .col .item.active {
   color: #ff0;
 }
-.article-fullscreen__col-1 {
-  background-size: cover;
-  background-position: 50%;
-  height: 100%;
-  width: 50%;
-  transition: background 1s;
-}
-.article-fullscreen__col-1 .item {
-  justify-content: flex-start;
-}
-.article-fullscreen__col-1 .item > span {
-  margin-left: 0.65em;
-}
+.article-fullscreen__col-1,
 .article-fullscreen__col-2 {
   background-size: cover;
   background-position: 50%;
   height: 100%;
   width: 50%;
   transition: background 1s;
+  position: relative;
+  overflow: hidden;
+}
+.article-fullscreen__col-1 .item > span,
+.article-fullscreen__col-2 .item > span {
+  margin: 0 30px;
+}
+.article-fullscreen__col-1 .item {
+  justify-content: flex-start;
 }
 .article-fullscreen__col-2 .item {
   justify-content: flex-end;
-}
-.article-fullscreen__col-2 .item > span {
-  margin-right: 0.65em;
 }
