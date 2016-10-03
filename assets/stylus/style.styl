@@ -47,6 +47,8 @@ h1
     flex-direction column
     justify-content space-between
     align-items center
+    > h1:nth-child(2)
+      margin-bottom 70px
 .cycle-slideshow
   position relative
   width 50%
@@ -57,8 +59,6 @@ h1
       height 100vh
       margin-left -25%
       opacity .85
-    // .video
-    //   height 100vh
   .pager
     z-index 2000
     position absolute
@@ -86,74 +86,3 @@ h1
     &__right
       h1
         justify-content flex-end
-.article-fullscreen
-  // width 100%
-  // height 100vh
-  // overflow hidden
-  // display flex
-  // .title
-  //   position absolute
-  //   left 0
-  //   right 0
-  //   top 80px
-  //   bottom 0
-  //   display flex
-  //   text-align center
-  //   flex-wrap wrap
-  //   z-index 300
-  //   h1:nth-child(1)
-  //     width 100%
-  //     align-self flex-start
-  //   h1:nth-child(2)
-  //     width 100%
-  //     align-self flex-end
-  // .media
-  //   background rgba(255,255,255, 0)
-  //   background-size cover !important
-  //   background-position 50% !important
-  //   height 100vh
-  //   transition background .25s linear
-  //   opacity .9
-  //   video
-  //     position absolute
-  //     top 0
-  //     bottom 0
-  //     left -25%
-  //     right 0
-  //     min-width 100%
-  //     z-index -10
-  //     height 100%
-  //     opacity 0
-  //     z-index 200
-  //     transition opacity .25s linear
-  // .col
-  //   position absolute
-  //   top 120px
-  //   bottom 5px
-  //   left 0
-  //   right 0
-  //   z-index 350
-  //   .item
-  //     display flex
-  //     padding 0
-  //     height 20%
-  //     margin 0
-  //     width 100%
-  //     align-items center
-  //     color rgba(255,255,255,0)
-  //     &.active
-  //       color rgba(255,255,255,1)
-  // &__col-1, &__col-2
-  //   background-size cover
-  //   background-position 50%
-  //   height 100%
-  //   width 50%
-  //   transition background 1s
-  //   position relative
-  //   overflow hidden
-  //   .item > span
-  //     margin 0 30px
-  // &__col-1 .item
-  //   justify-content flex-start
-  // &__col-2 .item
-  //    justify-content flex-end

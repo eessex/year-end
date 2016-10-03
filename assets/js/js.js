@@ -2,8 +2,13 @@
 (function() {
   $(function() {
     var setPagers;
+    $('.cycle-slideshow').hide();
     setTimeout((function() {
-      return setPagers();
+      $('.cycle-slideshow.right').cycle('goto', 3);
+      setPagers();
+      return setTimeout((function() {
+        return $('.cycle-slideshow').fadeIn();
+      }), 1000);
     }), 1000);
     setPagers = function() {
       return $('.pager a').each((function(_this) {
@@ -17,13 +22,21 @@
       })(this));
     };
     return $('.cycle-slideshow').on('cycle-before', function(event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) {
+      var i, speed;
+      speed = [200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100];
+      i = Math.floor(Math.random() * 10) - 1;
+      $(this).data('speed', speed[i]);
       if ($(incomingSlideEl).children().hasClass('video')) {
         $('video', incomingSlideEl)[0].play();
       }
       $('.pager h1').mouseenter(function(event) {
         var activeSlide;
         activeSlide = parseInt($(event.target.children).text());
-        $(event.target).closest('.cycle-slideshow').cycle('goto', activeSlide - 1);
+        if ($(event.target).closest('.cycle-slideshow').hasClass('left')) {
+          $(event.target).closest('.cycle-slideshow').cycle('goto', activeSlide - 1);
+        } else {
+          $(event.target).closest('.cycle-slideshow').cycle('goto', activeSlide - 6);
+        }
         return $(event.target).closest('.cycle-slideshow').cycle('pause');
       });
       return $('.pager h1').mouseleave(function(event) {
