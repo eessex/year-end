@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  					integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  					crossorigin="anonymous"></script>
+    <script src="http://malsup.github.io/min/jquery.cycle2.min.js"></script>
+		<style>
+			body {
+			  color: #fff;
+			  margin: 0;
+			  font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+			  background: #222;
+			  font-size: 13px;
+			}
+			h1 {
+			  font-weight: 300;
+			  font-size: 100px;
+			  margin-bottom: 50px;
+			  line-height: 50px;
+			  margin-top: 75px;
+			}
+			.header {
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  right: 0;
+			  display: flex;
+			  justify-content: space-between;
+			  align-items: center;
+			  border-bottom: 2px solid;
+			  z-index: 300;
+			  height: 80px;
+			  padding: 0 30px;
+			}
+			.header .logo.artsy {
+			  height: 40px;
+			  width: auto;
+			}
+			.header .right {
+			  display: flex;
+			  align-items: center;
+			}
+			.header .right p {
+			  display: inline-block;
+			  margin: 0 1.5em 0 0;
+			}
+			.header .right .logo.planet-art {
+			  display: inline-block;
+			  width: 130px;
+			}
+			.splash-container {
+			  display: flex;
+			}
+			.splash-container .title {
+			  position: fixed;
+			  top: 80px;
+			  left: 0;
+			  right: 0;
+			  bottom: 0;
+			  z-index: 200;
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: space-between;
+			  align-items: center;
+			}
+			.splash-container .title > h1:nth-child(2) {
+			  margin-bottom: 70px;
+			}
+			.cycle-slideshow {
+			  position: relative;
+			  width: 50%;
+			  overflow: hidden;
+			  height: 100vh;
+			}
+			.cycle-slideshow .slide img,
+			.cycle-slideshow .slide .video {
+			  height: 100vh;
+			  margin-left: -25%;
+			  opacity: 0.85;
+			}
+			.cycle-slideshow .pager {
+			  z-index: 2000;
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  bottom: 0;
+			  right: 0;
+			  margin-top: 80px;
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: space-around;
+			}
+			.cycle-slideshow .pager h1 {
+			  margin: 0;
+			  padding: 0 30px;
+			  height: 20%;
+			  display: flex;
+			  align-items: center;
+			}
+			.cycle-slideshow .pager h1 a {
+			  color: rgba(255,255,255,0);
+			  transition: all 0.75s;
+			  text-decoration: none;
+			}
+			.cycle-slideshow .pager h1.cycle-pager-active a {
+			  color: #fff;
+			  text-decoration: none;
+			}
+			.cycle-slideshow .pager__right h1 {
+			  justify-content: flex-end;
+			}
+		</style>
+  </head>
+  <body>
+    <main>
+      <div class="header">
+        <img class="logo artsy" src="https://artsy-vanity-files-production.s3.amazonaws.com/images/artsy_logo.png">
+        <div class="right">
+        	<p>Presented in<br />Partnership with</p>
+        	<img class="logo planet-art" src="https://artsy-vanity-files-production.s3.amazonaws.com/images/planetart.svg">
+    		</div>
+      </div>
+      <div class="splash-container">
+          <div class="title"><h1>The Year In Art</h1><h1>2016</h1></div>
+          <div class="cycle-slideshow left"
+               data-cycle-slides="> .slide"
+               data-cycle-loader="wait"
+               data-cycle-pager=".pager__left"
+               data-cycle-pager-template="<h1><a href=#></a></h1>"
+               >
+            <div class="slide">
+              <img src="https://artsy-vanity-files-production.s3.amazonaws.com/images/year-end-one.jpeg">
+            </div>
+            <div class="slide">
+              <img src="https://artsy-vanity-files-production.s3.amazonaws.com/images/year-end-two.jpeg">
+            </div>
+            <div class="slide">
+              <video class="video" playsinline muted loop>
+                <source src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/year-end-three.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="slide">
+              <video class="video" playsinline muted loop>
+                <source src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/year-end-five.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="slide">
+              <img src="https://artsy-vanity-files-production.s3.amazonaws.com/images/year-end-four.jpeg">
+            </div>
+            <div class="pager pager__left"></div>
+          </div>
+          <div class="cycle-slideshow right"
+               data-cycle-slides="> .slide"
+               data-cycle-loader="wait"
+               data-cycle-pager=".pager__right"
+               data-cycle-pager-template="<h1><a href=#></a></h1>"
+               >
+            <div class="slide">
+              <img src="https://artsy-vanity-files-production.s3.amazonaws.com/images/year-end-four.jpeg">
+            </div>
+            <div class="slide">
+              <video class="video" playsinline muted loop>
+                <source src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/year-end-six.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="slide">
+              <img src="https://artsy-vanity-files-production.s3.amazonaws.com/images/year-end-two.jpeg">
+            </div>
+            <div class="slide">
+              <video class="video" playsinline muted loop>
+                <source src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/year-end-three.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="slide">
+              <img src="https://artsy-vanity-files-production.s3.amazonaws.com/images/year-end-one.jpeg">
+            </div>
+            <div class="pager pager__right"></div>
+          </div>
+       </div>
+    </main>
+  <script>
+    (function() {
+      $(function() {
+        var setPagers;
+        $('.cycle-slideshow').hide();
+        setTimeout((function() {
+          $('.cycle-slideshow.right').cycle('goto', 3);
+          setPagers();
+          return setTimeout((function() {
+            return $('.cycle-slideshow').fadeIn();
+          }), 500);
+        }), 500);
+        setPagers = function() {
+          return $('.pager a').each((function(_this) {
+            return function(index, element) {
+              if (index < 9) {
+                return $(element).text("0" + (index + 1));
+              } else {
+                return $(element).text(index + 1);
+              }
+            };
+          })(this));
+        };
+        return $('.cycle-slideshow').on('cycle-before', function(event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) {
+          var i, speed;
+          speed = [200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100];
+          i = Math.floor(Math.random() * 10) - 1;
+          $(this).data('speed', speed[i]);
+          if ($(incomingSlideEl).children().hasClass('video')) {
+            $('video', incomingSlideEl)[0].play();
+          }
+          $('.pager h1').mouseenter(function(event) {
+            var activeSlide;
+            activeSlide = parseInt($(event.target.children).text());
+            if ($(event.target).closest('.cycle-slideshow').hasClass('left')) {
+              $(event.target).closest('.cycle-slideshow').cycle('goto', activeSlide - 1);
+            } else {
+              $(event.target).closest('.cycle-slideshow').cycle('goto', activeSlide - 6);
+            }
+            return $(event.target).closest('.cycle-slideshow').cycle('pause');
+          });
+          return $('.pager h1').mouseleave(function(event) {
+            return $(event.target).closest('.cycle-slideshow').cycle('resume');
+          });
+        });
+      });
+
+    }).call(this);
+  </script>
+  </body>
+</html>

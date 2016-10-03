@@ -92,7 +92,7 @@ h1 {
 }
 .cycle-slideshow .pager h1 a {
   color: rgba(255,255,255,0);
-  transition: all 1s;
+  transition: all 0.75s;
   text-decoration: none;
 }
 .cycle-slideshow .pager h1.cycle-pager-active a {

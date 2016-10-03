@@ -8,8 +8,8 @@
       setPagers();
       return setTimeout((function() {
         return $('.cycle-slideshow').fadeIn();
-      }), 1000);
-    }), 1000);
+      }), 500);
+    }), 500);
     setPagers = function() {
       return $('.pager a').each((function(_this) {
         return function(index, element) {

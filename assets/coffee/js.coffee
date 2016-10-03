@@ -3,8 +3,8 @@ $ ->
 	setTimeout (->
 		$('.cycle-slideshow.right').cycle('goto', 3)
 		setPagers()
-		setTimeout (-> $( '.cycle-slideshow' ).fadeIn() ), 1000
-		), 1000
+		setTimeout (-> $( '.cycle-slideshow' ).fadeIn() ), 500
+		), 500
 
 	setPagers = () ->
 		$('.pager a').each (index, element) =>
