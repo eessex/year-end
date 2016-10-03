@@ -1,22 +1,104 @@
 body {
-  color: #00f;
+  color: #fff;
   margin: 0;
   font-family: 'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', 'Times', 'serif';
+  background: #222;
+  font-size: 13px;
 }
-.article-fullscreen {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+h1 {
+  font-weight: 300;
+  font-size: 100px;
+  margin-bottom: 50px;
+  line-height: 50px;
+  margin-top: 75px;
+}
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid;
+  z-index: 300;
+  height: 80px;
+  padding: 0 30px;
+}
+.header .logo.artsy {
+  height: 40px;
+  width: auto;
+}
+.header .right {
+  display: flex;
+  align-items: center;
+}
+.header .right p {
+  display: inline-block;
+  margin: 0 1.5em 0 0;
+}
+.header .right .logo.planet-art {
+  display: inline-block;
+  width: 130px;
+}
+.splash-container {
   display: flex;
 }
-.article-fullscreen__col-1 {
-  background-size: cover;
-  background-position: 50%;
-  height: 100%;
-  width: 50%;
+.splash-container .title {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
-.article-fullscreen__col-2 {
-  background: #ff0;
-  height: 100%;
+.splash-container .title > h1:nth-child(2) {
+  margin-bottom: 70px;
+}
+.cycle-slideshow {
+  position: relative;
   width: 50%;
+  overflow: hidden;
+  height: 100vh;
+}
+.cycle-slideshow .slide img,
+.cycle-slideshow .slide .video {
+  height: 100vh;
+  margin-left: -25%;
+  opacity: 0.85;
+}
+.cycle-slideshow .pager {
+  z-index: 2000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.cycle-slideshow .pager h1 {
+  margin: 0;
+  padding: 0 30px;
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+.cycle-slideshow .pager h1 a {
+  color: rgba(255,255,255,0);
+  transition: all 1s;
+  text-decoration: none;
+}
+.cycle-slideshow .pager h1.cycle-pager-active a {
+  color: #fff;
+  text-decoration: none;
+}
+.cycle-slideshow .pager__right h1 {
+  justify-content: flex-end;
 }

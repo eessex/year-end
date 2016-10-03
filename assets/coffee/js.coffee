@@ -1,8 +1,33 @@
-backgrounds = ['url(https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Ffu2NrvxW_F3JK3rCE-50dw%252F1405_A-Levy_FelixKiessling_Ausdehnung_35B9884.jpg&width=1100&quality=95)', 'url(https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9c8Gt0OxTiCWiOszM76LIw%252FMCH_Artsy5.jpg&width=1100&quality=95)', 'url(https://d7hftxdivxxvm.cloudfront.net/?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FD0QaqRzjY2PoCuSp2HvhSA%252F1-AnnaHulau%25CC%2588ov%25E2%2580%25A0-Brothers-2015-photoby%2BMicha%2BlCzanderle-courtesy%2Bhuntkastner%25282%2529.jpg&width=1100&quality=95)'];
-current = 0
+$ ->
+	$( '.cycle-slideshow' ).hide()
+	setTimeout (->
+		$('.cycle-slideshow.right').cycle('goto', 3)
+		setPagers()
+		setTimeout (-> $( '.cycle-slideshow' ).fadeIn() ), 1000
+		), 1000
 
-rotateBackground = =>
-	$('.article-fullscreen__col-1').css('background-image', backgrounds[current = ++current % backgrounds.length])
-	setTimeout(rotateBackground, 5000)
+	setPagers = () ->
+		$('.pager a').each (index, element) =>
+			if (index < 9)
+				$(element).text( "0" + (index + 1) )
+			else
+				$(element).text(index + 1)
 
-rotateBackground()
+	$( '.cycle-slideshow' ).on 'cycle-before', (event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) ->
+		speed = [200,300,400,500,600,700,800,900,1000,1100]
+		i = Math.floor(Math.random() * 10) - 1
+		$(this).data('speed', speed[i])
+
+		if $(incomingSlideEl).children().hasClass('video')
+			$('video', incomingSlideEl)[0].play()
+
+		$('.pager h1').mouseenter (event) ->
+			activeSlide = parseInt($(event.target.children).text())
+			if $(event.target).closest('.cycle-slideshow').hasClass('left')
+				$(event.target).closest('.cycle-slideshow').cycle('goto', activeSlide - 1);
+			else
+				$(event.target).closest('.cycle-slideshow').cycle('goto', activeSlide - 6);
+			$(event.target).closest('.cycle-slideshow').cycle('pause')
+
+		$('.pager h1').mouseleave (event) ->
+			$(event.target).closest('.cycle-slideshow').cycle('resume')
